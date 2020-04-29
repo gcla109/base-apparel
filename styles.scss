@@ -1,0 +1,211 @@
+body {
+    background: linear-gradient(135deg, hsl(0, 0%, 100%), hsl(0, 100%, 98%));
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 16px;
+    margin: 0;
+    min-height: 100%;
+}
+
+main {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: max-content max-content 1fr;
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+.background {
+    display: none;
+}
+
+.poster-container {
+    grid-row: 2/3;
+
+    .poster-img {
+        background: url(images/hero-mobile.jpg);
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+        height: 250px;
+    }
+}
+
+.brand-title {
+    padding: 2rem;
+    opacity: 0.9;
+}
+
+.details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    h1,
+    p {
+        margin: 0;
+        text-align: center;
+    }
+
+    h1 {
+        color: hsl(0, 6%, 24%);
+        font-size: 3em;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+
+        &:first-child {
+            color: hsl(0, 36%, 70%);
+            font-weight: 300;
+        }
+    }
+
+    p {
+        color: hsl(0, 36%, 70%);
+        padding: 1.5rem 2rem;
+        line-height: 1.3em;
+    }
+
+    .error-message {
+        display: none;
+        color: hsl(0, 93%, 68%);
+        padding: 0.5em 0 0 1.7em;
+        font-size: 0.875em;
+
+        &.active {
+            display: block;
+        }
+    }
+
+    .email-container {
+        border-radius: 2em;
+        border: 1px solid hsl(0, 36%, 70%);
+        display: flex;
+        align-items: center;
+        width: 75%;
+
+        &.error {
+            border: 2px solid hsl(0, 93%, 68%);
+
+            .error-icon {
+                display: block;
+            }
+        }
+
+        ::-webkit-input-placeholder {
+            color: hsl(0, 36%, 70%);
+        }
+
+        :-ms-input-placeholder {
+            color: hsl(0, 36%, 70%);
+        }
+
+        ::-ms-input-placeholder {
+            color: hsl(0, 36%, 70%);
+        }
+
+        .email-input {
+            background: none;
+            border: none;
+            flex: 1;
+            font-weight: 600;
+            padding: 1.5em 0.5em 1.5em 2em;
+            min-width: 0;
+
+            &:active,
+            &:focus {
+                outline: none;
+            }
+        }
+
+        .error-icon {
+            display: none;
+            height: 50%;
+            margin: 0 0.4rem;
+        }
+
+        .email-submit-btn {
+            background: linear-gradient(135deg, hsl(0, 80%, 86%), hsl(0, 74%, 74%));
+            border-radius: 2em;
+            border: none;
+            cursor: pointer;
+            width: 5rem;
+            height: 100%;
+            min-height: 56px;
+            box-shadow: 1px 5px 11px hsl(0, 36%, 78%);
+
+            &:active,
+            &:focus {
+                outline: none;
+            }
+
+            &:hover {
+                background: hsl(0, 80%, 86%);
+                animation: slideLeft 0.1s forwards linear;
+            }
+
+            @keyframes slideLeft {
+                0% {
+                    width: 5rem;
+                }
+
+                100% {
+                    width: 5.5rem;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 768px) and (orientation: landscape) {
+    main {
+        grid-template-columns: 1fr max-content;
+        grid-template-rows: max-content 1fr;
+    }
+
+    .background {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        min-width: 65%;
+        min-height: auto;
+        z-index: -1;
+    }
+
+    .brand-title {
+        padding: 3rem 17%;
+    }
+
+    .details-container {
+        grid-row: 2/3;
+        align-items: baseline;
+        padding: 0 17%;
+
+        h1,
+        p {
+            text-align: left;
+            padding: 0;
+        }
+
+        p {
+            padding: 1.2rem 0 2rem;
+        }
+
+        .email-container {
+            width: 90%;
+        }
+    }
+
+    .poster-container {
+        grid-row: 1/4;
+        grid-column: 2/3;
+        min-width: 600px;
+
+        .poster-img {
+            background: url(images/hero-desktop.jpg);
+            background-position-x: right;
+            background-repeat: no-repeat;
+            background-size: auto;
+            height: 100%;
+        }
+    }
+}
